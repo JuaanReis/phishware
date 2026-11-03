@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Envie um executável ou script suspeito. Ele é analisado sem ser executado.">
+  <meta name="author" content="Rafael Bonaldi">
+  <meta name="application-name" content="Phishware">
+  <meta name="theme-color" content="#0e1b33">
+  <title>Phishware – Verificar um arquivo</title>
+  <link rel="icon" href="Imagens/logo.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body data-analysis="file">
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="Imagens/logo2.png" alt="" width="40" height="40"><span>Phishware</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navPanel" aria-label="Abrir ou fechar o menu"><i class="ic ic-menu" aria-hidden="true"></i></button>
+    <div class="nav-panel" id="navPanel">
+      <nav aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">Início</a></li>
+          <li>
+            <button class="nav-link" type="button" data-menu-toggle aria-haspopup="true" aria-expanded="false" aria-controls="menuVerificar" aria-current="page">Verificar <i class="ic ic-chevron" aria-hidden="true"></i></button>
+            <ul class="menu" id="menuVerificar" data-menu><li><a href="analise-url.html"><i class="ic ic-link" aria-hidden="true"></i>Link</a></li><li><a href="analise-qrcode.html"><i class="ic ic-qr" aria-hidden="true"></i>QR Code</a></li><li><a href="analise-pix.html"><i class="ic ic-pix" aria-hidden="true"></i>Pix (copia e cola)</a></li><li><a href="analise-arquivo.html" aria-current="page"><i class="ic ic-file" aria-hidden="true"></i>Arquivo</a></li><li><a href="analise-imagem.html"><i class="ic ic-image" aria-hidden="true"></i>Imagem</a></li></ul>
+          </li>
+          <li><a class="nav-link" href="chat.html">Chat</a></li>
+          <li><a class="nav-link" href="historico.html">Histórico</a></li>
+          <li><a class="nav-link" href="sobre.html">Sobre nós</a></li>
+        </ul>
+      </nav>
+      <div class="nav-account" id="navAccount">
+        <a class="nav-link" href="login.html">Entrar</a>
+        <a class="btn btn-green btn-sm" href="cadastro.html">Criar conta</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+  <section class="wrap page-head">
+    <nav class="crumbs" aria-label="Tipos de verificação"><a href="analise-url.html">Link</a><a href="analise-qrcode.html">QR Code</a><a href="analise-pix.html">Pix</a><a href="analise-arquivo.html" aria-current="page">Arquivo</a><a href="analise-imagem.html">Imagem</a></nav>
+    <h1>Verificar um arquivo</h1>
+    <p>Envie um executável ou script suspeito. Ele é analisado sem ser executado.</p>
+  </section>
+
+  <section class="wrap">
+    <div class="tool-grid">
+      <div class="panel">
+        <form id="analysisForm" novalidate>
+          <span class="label">Arquivo suspeito</span>
+          <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-describedby="dzHint">
+            <i class="ic ic-upload" aria-hidden="true"></i>
+            <p class="dz-title">Clique para escolher ou arraste até aqui</p>
+            <p id="fileName" class="dz-name">Nenhum arquivo escolhido</p>
+            <p id="dzHint" class="dz-hint">Executáveis (EXE, DLL, ELF, Mach-O) e scripts. Até 50 MB.</p>
+          </div>
+          <input type="file" id="fileInput" class="d-none" tabindex="-1">
+          <div id="previewBox" class="preview-box"><img id="previewImg" alt="Pré-visualização da imagem escolhida"></div>
+          <div style="height:1.25rem"></div>
+          <button id="btnAnalyze" class="btn btn-primary btn-lg btn-block" type="submit"><span class="spinner d-none" aria-hidden="true"></span><span class="btn-label">Verificar arquivo</span></button>
+        </form>
+      </div>
+      <aside class="tool-notes" aria-label="Informações úteis">
+        <div class="note"><h3>Análise estática</h3><p>O arquivo é examinado por dentro, mas nunca executado.</p></div>
+        <div class="note"><h3>Resultado parcial</h3><p>Se o tipo de arquivo não tiver cobertura completa, o resultado pode vir como parcial ou inconclusivo.</p></div>
+        <div class="note"><h3>Quantas verificações posso fazer?</h3><p>Sem conta, 3 por dia, somando todas as ferramentas. Com conta, o limite depende do plano. <a href="cadastro.html">Criar conta</a></p></div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="skeleton" class="skeleton d-none" aria-hidden="true">
+    <div class="result-band"><div class="wrap result-band-in"><div class="sk sk-gauge"></div><div class="sk" style="height:120px;width:100%"></div></div></div>
+    <div class="wrap result-grid"><div class="sk sk-block"></div><div class="sk sk-block"></div></div>
+  </section>
+
+  <section id="resultSection" class="result d-none" aria-live="polite" aria-label="Resultado da análise">
+    <div id="resultBand" class="result-band">
+      <div class="wrap result-band-in">
+        <div id="gauge" class="gauge"></div>
+        <div class="result-verdict">
+          <span id="riskLabel" class="stamp">Aguardando</span>
+          <h2 id="verdictText"></h2>
+          <p class="note">A pontuação vai de 0 a 100 e mede os sinais de risco encontrados. Ela não é a probabilidade de ser golpe.</p>
+          <div id="statChips" class="chips"></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap result-grid">
+      <section class="panel"><h2>Resumo da análise</h2><table class="kv"><tbody id="summaryBody"></tbody></table></section>
+      <section class="panel"><h2>Principais alertas</h2><ul id="insightList" class="alerts"></ul></section>
+      <section id="heuristicsWrap" class="panel span d-none">
+        <h2>Regras analisadas</h2>
+        <div class="table-scroll"><table class="data">
+          <thead><tr><th scope="col">Regra</th><th scope="col">Detalhe</th><th scope="col" class="num">Peso</th></tr></thead>
+          <tbody id="heuristicsBody"></tbody>
+        </table></div>
+      </section>
+      <section class="panel span"><h2>Detalhes técnicos</h2><div id="targetAccordion"></div></section>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html"><img src="Imagens/logo2.png" alt="" width="40" height="40"><span>Phishware</span></a>
+        <p>Verificamos links, QR Codes, chaves Pix e arquivos antes que você caia em um golpe.</p>
+        <p><a href="https://github.com/JuaanReis/scamlens" target="_blank" rel="noopener"><i class="ic ic-github" aria-hidden="true"></i> Código do motor de análise</a><br><a href="mailto:contato@phishware.com"><i class="ic ic-mail" aria-hidden="true"></i> contato@phishware.com</a></p>
+      </div>
+      <div>
+        <h2>Navegação</h2>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="chat.html">Chat</a></li>
+          <li><a href="conta.html">Minha conta</a></li>
+          <li><a href="historico.html">Histórico</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Verificar</h2>
+        <ul>
+          <li><a href="analise-url.html">Link</a></li>
+          <li><a href="analise-qrcode.html">QR Code</a></li>
+          <li><a href="analise-pix.html">Pix copia e cola</a></li>
+          <li><a href="analise-arquivo.html">Arquivo</a></li>
+          <li><a href="analise-imagem.html">Imagem</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="anoAtual">2026</span> Phishware. Todos os direitos reservados.</span>
+      <span class="status" id="siteStatus" role="status">Verificando o servidor…</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script src="js/gauge.js"></script>
+<script src="js/analysis.js"></script>
+</body>
+</html>

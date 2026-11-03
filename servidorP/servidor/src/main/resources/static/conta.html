@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gerencie sua conta Phishware.">
+  <meta name="author" content="Rafael Bonaldi">
+  <meta name="application-name" content="Phishware">
+  <meta name="theme-color" content="#0e1b33">
+  <title>Phishware – Minha conta</title>
+  <link rel="icon" href="Imagens/logo.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="Imagens/logo2.png" alt="" width="40" height="40"><span>Phishware</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navPanel" aria-label="Abrir ou fechar o menu"><i class="ic ic-menu" aria-hidden="true"></i></button>
+    <div class="nav-panel" id="navPanel">
+      <nav aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">Início</a></li>
+          <li>
+            <button class="nav-link" type="button" data-menu-toggle aria-haspopup="true" aria-expanded="false" aria-controls="menuVerificar">Verificar <i class="ic ic-chevron" aria-hidden="true"></i></button>
+            <ul class="menu" id="menuVerificar" data-menu><li><a href="analise-url.html"><i class="ic ic-link" aria-hidden="true"></i>Link</a></li><li><a href="analise-qrcode.html"><i class="ic ic-qr" aria-hidden="true"></i>QR Code</a></li><li><a href="analise-pix.html"><i class="ic ic-pix" aria-hidden="true"></i>Pix (copia e cola)</a></li><li><a href="analise-arquivo.html"><i class="ic ic-file" aria-hidden="true"></i>Arquivo</a></li><li><a href="analise-imagem.html"><i class="ic ic-image" aria-hidden="true"></i>Imagem</a></li></ul>
+          </li>
+          <li><a class="nav-link" href="chat.html">Chat</a></li>
+          <li><a class="nav-link" href="historico.html">Histórico</a></li>
+          <li><a class="nav-link" href="sobre.html">Sobre nós</a></li>
+        </ul>
+      </nav>
+      <div class="nav-account" id="navAccount">
+        <a class="nav-link" href="login.html">Entrar</a>
+        <a class="btn btn-green btn-sm" href="cadastro.html">Criar conta</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+  <section class="wrap page-head"><h1>Minha conta</h1><p>Sua foto de perfil aparece no topo do site e no chat.</p></section>
+  <section class="wrap">
+    <div class="panel">
+      <form id="formConta" class="account" novalidate>
+        <div class="photo">
+          <div class="photo-frame">
+            <img id="fotoPerfil" class="foto-perfil" src="" alt="Sua foto de perfil" width="190" height="190">
+            <button id="botaoFoto" class="btn-cam" type="button" aria-label="Escolher outra foto de perfil"><i class="ic ic-camera" aria-hidden="true"></i></button>
+          </div>
+          <input type="file" id="arquivoFoto" class="d-none" accept="image/*" tabindex="-1">
+          <p class="muted small" style="margin:0">Escolha uma foto e clique em Salvar alterações.</p>
+        </div>
+        <div>
+          <h2>Dados da conta</h2>
+          <div class="field"><label for="nome">Nome</label><input id="nome" class="input" type="text" readonly autocomplete="name"></div>
+          <div class="field"><label for="email">E-mail</label><input id="email" class="input" type="email" readonly autocomplete="email"></div>
+          <p class="hint" style="margin:-0.5rem 0 1.5rem">Nome e e-mail ainda não podem ser alterados por aqui. Por enquanto, a foto é o único dado que você pode mudar.</p>
+          <div id="planBox" class="plan-box d-none"><span class="badge"></span><p></p></div>
+          <div class="actions">
+            <button id="btnSalvar" class="btn btn-primary" type="submit"><i class="ic ic-check" aria-hidden="true"></i><span class="btn-label">Salvar alterações</span></button>
+            <button id="btnSair" class="btn btn-ghost" type="button"><i class="ic ic-logout" aria-hidden="true"></i>Sair</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html"><img src="Imagens/logo2.png" alt="" width="40" height="40"><span>Phishware</span></a>
+        <p>Verificamos links, QR Codes, chaves Pix e arquivos antes que você caia em um golpe.</p>
+        <p><a href="https://github.com/JuaanReis/scamlens" target="_blank" rel="noopener"><i class="ic ic-github" aria-hidden="true"></i> Código do motor de análise</a><br><a href="mailto:contato@phishware.com"><i class="ic ic-mail" aria-hidden="true"></i> contato@phishware.com</a></p>
+      </div>
+      <div>
+        <h2>Navegação</h2>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="chat.html">Chat</a></li>
+          <li><a href="conta.html">Minha conta</a></li>
+          <li><a href="historico.html">Histórico</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Verificar</h2>
+        <ul>
+          <li><a href="analise-url.html">Link</a></li>
+          <li><a href="analise-qrcode.html">QR Code</a></li>
+          <li><a href="analise-pix.html">Pix copia e cola</a></li>
+          <li><a href="analise-arquivo.html">Arquivo</a></li>
+          <li><a href="analise-imagem.html">Imagem</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="anoAtual">2026</span> Phishware. Todos os direitos reservados.</span>
+      <span class="status" id="siteStatus" role="status">Verificando o servidor…</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script src="js/conta.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Converse com outros usuários sobre golpes e segurança.">
+  <meta name="author" content="Rafael Bonaldi">
+  <meta name="application-name" content="Phishware">
+  <meta name="theme-color" content="#0e1b33">
+  <title>Phishware – Chat</title>
+  <link rel="icon" href="Imagens/logo.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="Imagens/logo2.png" alt="" width="40" height="40"><span>Phishware</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navPanel" aria-label="Abrir ou fechar o menu"><i class="ic ic-menu" aria-hidden="true"></i></button>
+    <div class="nav-panel" id="navPanel">
+      <nav aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">Início</a></li>
+          <li>
+            <button class="nav-link" type="button" data-menu-toggle aria-haspopup="true" aria-expanded="false" aria-controls="menuVerificar">Verificar <i class="ic ic-chevron" aria-hidden="true"></i></button>
+            <ul class="menu" id="menuVerificar" data-menu><li><a href="analise-url.html"><i class="ic ic-link" aria-hidden="true"></i>Link</a></li><li><a href="analise-qrcode.html"><i class="ic ic-qr" aria-hidden="true"></i>QR Code</a></li><li><a href="analise-pix.html"><i class="ic ic-pix" aria-hidden="true"></i>Pix (copia e cola)</a></li><li><a href="analise-arquivo.html"><i class="ic ic-file" aria-hidden="true"></i>Arquivo</a></li><li><a href="analise-imagem.html"><i class="ic ic-image" aria-hidden="true"></i>Imagem</a></li></ul>
+          </li>
+          <li><a class="nav-link" href="chat.html" aria-current="page">Chat</a></li>
+          <li><a class="nav-link" href="historico.html">Histórico</a></li>
+          <li><a class="nav-link" href="sobre.html">Sobre nós</a></li>
+        </ul>
+      </nav>
+      <div class="nav-account" id="navAccount">
+        <a class="nav-link" href="login.html">Entrar</a>
+        <a class="btn btn-green btn-sm" href="cadastro.html">Criar conta</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+  <section class="wrap page-head"><h1>Chat da comunidade</h1><p>Tire dúvidas sobre mensagens, links e pedidos suspeitos com outros usuários.</p></section>
+  <section class="wrap">
+    <div id="chatBoot" class="empty" role="status">Conectando ao chat…</div>
+
+    <section id="authGate" class="d-none auth-main" style="padding-top:0">
+      <div class="panel auth-card">
+        <h2>Entre para participar</h2>
+        <p class="muted">O chat usa a sua conta Phishware.</p>
+        <div class="tabs" role="tablist">
+          <button type="button" role="tab" data-tab="paneLogin" aria-selected="true">Entrar</button>
+          <button type="button" role="tab" data-tab="paneRegister" aria-selected="false">Criar conta</button>
+        </div>
+        <div id="paneLogin" role="tabpanel">
+          <form id="formChatLogin">
+            <div class="field"><label for="clEmail">E-mail</label><input id="clEmail" class="input" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="clSenha">Senha</label><input id="clSenha" class="input" name="password" type="password" autocomplete="current-password" required></div>
+            <button class="btn btn-primary btn-block" type="submit">Entrar no chat</button>
+          </form>
+        </div>
+        <div id="paneRegister" role="tabpanel" class="d-none">
+          <form id="formChatRegister">
+            <div class="field"><label for="crNome">Nome</label><input id="crNome" class="input" name="nome" type="text" autocomplete="name" maxlength="100" required></div>
+            <div class="field"><label for="crEmail">E-mail</label><input id="crEmail" class="input" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="crSenha">Senha</label><input id="crSenha" class="input" name="password" type="password" autocomplete="new-password" minlength="8" required><p class="hint">Mínimo de 8 caracteres.</p></div>
+            <button class="btn btn-primary btn-block" type="submit">Criar conta e entrar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="chatApp" class="panel chat-shell d-none" aria-label="Chat">
+      <header class="chat-head">
+        <div class="who"><i class="ic ic-chat" aria-hidden="true"></i><span id="meName"></span><span id="connStatus" class="conn conn-off">Desconectado</span></div>
+        <button id="btnLogout" type="button" class="btn btn-ghost btn-sm">Sair</button>
+      </header>
+
+      <div id="messages" class="chat-messages" role="log" aria-live="polite" aria-label="Mensagens do chat">
+        <div style="text-align:center;margin-bottom:0.75rem"><button id="btnOlder" type="button" class="btn btn-ghost btn-sm d-none">Carregar mensagens anteriores</button></div>
+        <div id="historySkeleton" class="d-none" aria-hidden="true"><div class="sk sk-line"></div><div class="sk sk-line r"></div><div class="sk sk-line"></div></div>
+        <ol id="messageList" class="msg-list"></ol>
+        <p id="emptyChat" class="empty d-none">Nenhuma mensagem ainda. Seja o primeiro a escrever.</p>
+      </div>
+
+      <button id="newMsgBtn" type="button" class="btn btn-primary btn-sm new-msg d-none"></button>
+
+      <form id="composer" class="chat-composer" autocomplete="off">
+        <label class="visually-hidden" for="messageInput">Escreva sua mensagem</label>
+        <textarea id="messageInput" class="textarea" rows="1" placeholder="Escreva uma mensagem…"></textarea>
+        <button id="btnSend" class="btn btn-primary" type="submit" disabled><i class="ic ic-send" aria-hidden="true"></i><span class="visually-hidden">Enviar</span></button>
+        <p id="charCount" class="counter">0/2000</p>
+      </form>
+    </section>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html"><img src="Imagens/logo2.png" alt="" width="40" height="40"><span>Phishware</span></a>
+        <p>Verificamos links, QR Codes, chaves Pix e arquivos antes que você caia em um golpe.</p>
+        <p><a href="https://github.com/JuaanReis/scamlens" target="_blank" rel="noopener"><i class="ic ic-github" aria-hidden="true"></i> Código do motor de análise</a><br><a href="mailto:contato@phishware.com"><i class="ic ic-mail" aria-hidden="true"></i> contato@phishware.com</a></p>
+      </div>
+      <div>
+        <h2>Navegação</h2>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="chat.html">Chat</a></li>
+          <li><a href="conta.html">Minha conta</a></li>
+          <li><a href="historico.html">Histórico</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Verificar</h2>
+        <ul>
+          <li><a href="analise-url.html">Link</a></li>
+          <li><a href="analise-qrcode.html">QR Code</a></li>
+          <li><a href="analise-pix.html">Pix copia e cola</a></li>
+          <li><a href="analise-arquivo.html">Arquivo</a></li>
+          <li><a href="analise-imagem.html">Imagem</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="anoAtual">2026</span> Phishware. Todos os direitos reservados.</span>
+      <span class="status" id="siteStatus" role="status">Verificando o servidor…</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Verifique links, QR Codes, chaves Pix e arquivos suspeitos antes de clicar, pagar ou abrir.">
+  <meta name="author" content="Rafael Bonaldi">
+  <meta name="application-name" content="Phishware">
+  <meta name="theme-color" content="#0e1b33">
+  <title>Phishware – Sua vida mais segura</title>
+  <link rel="icon" href="Imagens/logo.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="Imagens/logo2.png" alt="" width="40" height="40"><span>Phishware</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navPanel" aria-label="Abrir ou fechar o menu"><i class="ic ic-menu" aria-hidden="true"></i></button>
+    <div class="nav-panel" id="navPanel">
+      <nav aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html" aria-current="page">Início</a></li>
+          <li>
+            <button class="nav-link" type="button" data-menu-toggle aria-haspopup="true" aria-expanded="false" aria-controls="menuVerificar">Verificar <i class="ic ic-chevron" aria-hidden="true"></i></button>
+            <ul class="menu" id="menuVerificar" data-menu><li><a href="analise-url.html"><i class="ic ic-link" aria-hidden="true"></i>Link</a></li><li><a href="analise-qrcode.html"><i class="ic ic-qr" aria-hidden="true"></i>QR Code</a></li><li><a href="analise-pix.html"><i class="ic ic-pix" aria-hidden="true"></i>Pix (copia e cola)</a></li><li><a href="analise-arquivo.html"><i class="ic ic-file" aria-hidden="true"></i>Arquivo</a></li><li><a href="analise-imagem.html"><i class="ic ic-image" aria-hidden="true"></i>Imagem</a></li></ul>
+          </li>
+          <li><a class="nav-link" href="chat.html">Chat</a></li>
+          <li><a class="nav-link" href="historico.html">Histórico</a></li>
+          <li><a class="nav-link" href="sobre.html">Sobre nós</a></li>
+        </ul>
+      </nav>
+      <div class="nav-account" id="navAccount">
+        <a class="nav-link" href="login.html">Entrar</a>
+        <a class="btn btn-green btn-sm" href="cadastro.html">Criar conta</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <h1>Confira antes de clicar, pagar ou abrir.</h1>
+        <p class="lead">A Phishware analisa links, QR Codes, chaves Pix e arquivos suspeitos e mostra o nível de risco em segundos.</p>
+        <form class="console" action="analise-url.html" method="get">
+          <i class="ic ic-link" aria-hidden="true"></i>
+          <label class="visually-hidden" for="heroUrl">Link para verificar</label>
+          <input id="heroUrl" name="u" type="url" inputmode="url" placeholder="Cole aqui o link que você recebeu" autocomplete="off" required>
+          <button class="btn btn-green btn-lg" type="submit">Verificar link</button>
+        </form>
+        <p class="hero-note">Recebeu um QR Code, um Pix ou um arquivo? <a href="analise-qrcode.html">QR Code</a>, <a href="analise-pix.html">Pix</a> e <a href="analise-arquivo.html">arquivo</a> também têm verificação.</p>
+      </div>
+      <aside class="specimen" aria-label="Exemplo ilustrativo de resultado">
+        <div class="specimen-head"><strong>entrega-correios-hoje.example</strong><span>Exemplo ilustrativo</span></div>
+        <dl>
+          <div class="row"><dt>Idade do domínio</dt><dd class="bad">3 dias</dd></div>
+          <div class="row"><dt>Certificado</dt><dd>Emitido há 2 dias</dd></div>
+          <div class="row"><dt>Redirecionamentos</dt><dd class="bad">4 saltos</dd></div>
+          <div class="row"><dt>Pede senha ou cartão</dt><dd class="bad">Sim</dd></div>
+        </dl>
+        <span class="stamp risk-high">Perigoso</span>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>O que você pode verificar</h2>
+        <p>Escolha o que chegou até você. Cada ferramenta mostra o que foi encontrado e por que o resultado saiu assim.</p>
+      </div>
+      <ul class="tool-list">
+      <li><a class="tool-row" href="analise-url.html">
+        <span class="ic-wrap"><i class="ic ic-link" aria-hidden="true"></i></span>
+        <h3>Link</h3>
+        <p>Idade do domínio, certificado, redirecionamentos e formulários que pedem senha ou cartão.</p>
+        <span class="go">Verificar <i class="ic ic-arrow" aria-hidden="true"></i></span>
+      </a></li>
+      <li><a class="tool-row" href="analise-qrcode.html">
+        <span class="ic-wrap"><i class="ic ic-qr" aria-hidden="true"></i></span>
+        <h3>QR Code</h3>
+        <p>Lemos o QR Code de uma imagem e checamos o link escondido nele antes de você abrir.</p>
+        <span class="go">Verificar <i class="ic ic-arrow" aria-hidden="true"></i></span>
+      </a></li>
+      <li><a class="tool-row" href="analise-pix.html">
+        <span class="ic-wrap"><i class="ic ic-pix" aria-hidden="true"></i></span>
+        <h3>Pix copia e cola</h3>
+        <p>Conferimos a estrutura do código e, se quiser, comparamos com o nome e o valor que você esperava.</p>
+        <span class="go">Verificar <i class="ic ic-arrow" aria-hidden="true"></i></span>
+      </a></li>
+      <li><a class="tool-row" href="analise-arquivo.html">
+        <span class="ic-wrap"><i class="ic ic-file" aria-hidden="true"></i></span>
+        <h3>Arquivo</h3>
+        <p>Executáveis e scripts são examinados sem serem abertos. Até 50 MB.</p>
+        <span class="go">Verificar <i class="ic ic-arrow" aria-hidden="true"></i></span>
+      </a></li>
+      <li><a class="tool-row" href="analise-imagem.html">
+        <span class="ic-wrap"><i class="ic ic-image" aria-hidden="true"></i></span>
+        <h3>Imagem</h3>
+        <p>Procura sinais de imagem gerada por IA ou editada, como comprovantes e anúncios falsos.</p>
+        <span class="go">Verificar <i class="ic ic-arrow" aria-hidden="true"></i></span>
+      </a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="wrap split">
+      <div class="section-head" style="margin:0">
+        <h2>Como ler o resultado</h2>
+        <p>Cada análise termina com um veredito e uma pontuação de 0 a 100. A pontuação mede quantos sinais de risco foram encontrados. Ela não é a chance de ser golpe, e um resultado “seguro” não é uma garantia.</p>
+      </div>
+      <div>
+        <ul class="legend">
+          <li class="l-safe"><strong>Seguro</strong><span>Nenhum sinal relevante de risco.</span></li>
+          <li class="l-warn"><strong>Suspeito</strong><span>Há sinais de cautela. Confirme por outro canal.</span></li>
+          <li class="l-danger"><strong>Perigoso</strong><span>Vários sinais de golpe. Não clique nem pague.</span></li>
+          <li class="l-bad"><strong>Malicioso</strong><span>Indícios fortes de conteúdo feito para causar dano.</span></li>
+        </ul>
+        <p class="muted small" style="margin:0">Quando faltam dados para concluir, o resultado aparece como parcial ou inconclusivo, nunca como seguro.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div class="section-head" style="margin:0">
+        <h2>Quantas verificações posso fazer?</h2>
+        <p>O limite é diário. Quem tem conta acompanha o histórico das próprias análises.</p>
+        <p style="margin-top:1rem"><a class="btn btn-primary" href="cadastro.html">Criar conta</a></p>
+      </div>
+      <table class="quota">
+        <thead><tr><th scope="col">Quem usa</th><th scope="col">Verificações por dia</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Sem conta</th><td>3, somando todas as ferramentas</td></tr>
+          <tr><th scope="row">Standard</th><td>5 em cada ferramenta</td></tr>
+          <tr><th scope="row">Go Pro</th><td>25 em cada ferramenta</td></tr>
+          <tr><th scope="row">Plus Premium</th><td>Sem limite diário</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="wrap">
+      <div class="section-head"><h2>Onde os golpes costumam aparecer</h2></div>
+      <div class="facts">
+        <div><h3>Compras e Pix</h3><p>Lojas falsas e cobranças adulteradas crescem todo mês. Conferimos o link, o QR Code e o código Pix antes de você pagar.</p></div>
+        <div><h3>Imagens e comprovantes</h3><p>Com IA e editores, comprovantes e anúncios podem ser forjados. Procuramos inconsistências e sinais de edição.</p></div>
+        <div><h3>Arquivos suspeitos</h3><p>Arquivos infectados roubam senhas e dados. Examinamos executáveis e scripts sem abri-los.</p></div>
+        <div><h3>Conversas online</h3><p>Golpes por WhatsApp, redes sociais e e-mail dependem de convencer você. No chat, a comunidade tira dúvidas sobre mensagens e pedidos estranhos.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html"><img src="Imagens/logo2.png" alt="" width="40" height="40"><span>Phishware</span></a>
+        <p>Verificamos links, QR Codes, chaves Pix e arquivos antes que você caia em um golpe.</p>
+        <p><a href="https://github.com/JuaanReis/scamlens" target="_blank" rel="noopener"><i class="ic ic-github" aria-hidden="true"></i> Código do motor de análise</a><br><a href="mailto:contato@phishware.com"><i class="ic ic-mail" aria-hidden="true"></i> contato@phishware.com</a></p>
+      </div>
+      <div>
+        <h2>Navegação</h2>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="chat.html">Chat</a></li>
+          <li><a href="conta.html">Minha conta</a></li>
+          <li><a href="historico.html">Histórico</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Verificar</h2>
+        <ul>
+          <li><a href="analise-url.html">Link</a></li>
+          <li><a href="analise-qrcode.html">QR Code</a></li>
+          <li><a href="analise-pix.html">Pix copia e cola</a></li>
+          <li><a href="analise-arquivo.html">Arquivo</a></li>
+          <li><a href="analise-imagem.html">Imagem</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="anoAtual">2026</span> Phishware. Todos os direitos reservados.</span>
+      <span class="status" id="siteStatus" role="status">Verificando o servidor…</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
